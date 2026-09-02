@@ -1,0 +1,292 @@
+[
+  {
+    "version": "20260727192256",
+    "name": "0001_tenancy",
+    "md5": "cedb23db06cdb068f46519da60cdcb1e"
+  },
+  {
+    "version": "20260727192346",
+    "name": "0002_ledger_core",
+    "md5": "40c4d3c60a22bdda134c84333d773fe8"
+  },
+  {
+    "version": "20260727192435",
+    "name": "0003_post_journal_entry",
+    "md5": "03ef5600418de94a89ff3d6c3a45034b"
+  },
+  {
+    "version": "20260727192636",
+    "name": "0004_fix_post_then_stamp_order",
+    "md5": "69bdf5ac5f2d4195570345539b68bd36"
+  },
+  {
+    "version": "20260727192830",
+    "name": "0005_harden_function_grants",
+    "md5": "c303269035c90576c261a318d6136fa3"
+  },
+  {
+    "version": "20260727194021",
+    "name": "0005_roles_and_company_setup",
+    "md5": "3d4d9fa8062096100c3c90cf17947f59"
+  },
+  {
+    "version": "20260727194406",
+    "name": "0006_fix_last_owner_guard_on_cascade",
+    "md5": "039cda172814c0e917b47be0cd21556a"
+  },
+  {
+    "version": "20260727194511",
+    "name": "0007_preserve_audit_identity_on_user_delete",
+    "md5": "9925ec63162b22069b24bf8feea2d209"
+  },
+  {
+    "version": "20260727194710",
+    "name": "0008_close_investor_table_access",
+    "md5": "f24c908c3398ce2f9492246d2b79bd0e"
+  },
+  {
+    "version": "20260727195047",
+    "name": "0009_seed_coa_not_callable_directly",
+    "md5": "46e17431b09aeddda802b13637ab9e46"
+  },
+  {
+    "version": "20260728055519",
+    "name": "0006_fix_seed_coa_privilege_escalation",
+    "md5": "5bbc176d48d8320942e60eb9ccf6f3bc"
+  },
+  {
+    "version": "20260728055623",
+    "name": "0007_allow_user_deletion_cascade",
+    "md5": "d29443d5c0599c27f506931aaa81c459"
+  },
+  {
+    "version": "20260728075414",
+    "name": "0008_seed_capital_account",
+    "md5": "67ebf02a0b7165b5b58b8ee334f77b5d"
+  },
+  {
+    "version": "20260728080219",
+    "name": "0010_reporting_engine",
+    "md5": "5d49a361b5a32635bc0e83249c4447be"
+  },
+  {
+    "version": "20260728105742",
+    "name": "0011_parties_and_capital_projects",
+    "md5": "52f11c34a85094130ecf305bb1d85ae2"
+  },
+  {
+    "version": "20260728113315",
+    "name": "0012_bills_and_payables",
+    "md5": "07b4cd1230d399d9e0c0e13c51da01f4"
+  },
+  {
+    "version": "20260728113409",
+    "name": "0013_save_entry_accepts_due_date",
+    "md5": "21aaa7cd2ff347642f83ff813b5d7b99"
+  },
+  {
+    "version": "20260728115718",
+    "name": "0014_bill_allocations",
+    "md5": "f06007ac0fe9ef749e771fabfcbb90fc"
+  },
+  {
+    "version": "20260728120536",
+    "name": "0015_unapplied_credits_guard",
+    "md5": "51185837bdedc32449072fad1cfe0eed"
+  },
+  {
+    "version": "20260728182015",
+    "name": "0016_investors_and_commitments",
+    "md5": "728d5b7d2ba9ad5e65734d96f09fe65d"
+  },
+  {
+    "version": "20260728182053",
+    "name": "0017_investor_summary",
+    "md5": "564af1218c6dcfe3bf1bcfabf65e870e"
+  },
+  {
+    "version": "20260728182853",
+    "name": "0018_invites_and_membership",
+    "md5": "aadd50c8202e1e338405f3084ff85df7"
+  },
+  {
+    "version": "20260728184054",
+    "name": "0019_internal_cash_accounts",
+    "md5": "e8dfe130d92e811af709c8dd49423c2e"
+  },
+  {
+    "version": "20260728184123",
+    "name": "0020_restore_create_company",
+    "md5": "6f78034ff0aead8f6dbf4257d6aeafff"
+  },
+  {
+    "version": "20260728191047",
+    "name": "0021_alerts_engine",
+    "md5": "a12d9b085b47f2610ab0fd6f73d1badd"
+  },
+  {
+    "version": "20260728191148",
+    "name": "0022_fix_alerts_ambiguity",
+    "md5": "6d797ac9af43de6805628252f1890164"
+  },
+  {
+    "version": "20260728192307",
+    "name": "0023_dismissible_alerts",
+    "md5": "6084555965b29866f9227ecbfbe6504f"
+  },
+  {
+    "version": "20260728193222",
+    "name": "0024_backup_and_restore",
+    "md5": "55096a70c5d5eb8b4da995c5cf0c51d9"
+  },
+  {
+    "version": "20260728193341",
+    "name": "0025_fix_backup_hash_encoding",
+    "md5": "770deb846eaa76718370bd3ee895eb9a"
+  },
+  {
+    "version": "20260730153602",
+    "name": "0026_reversal_must_not_hide_the_original",
+    "md5": "beadfc1858ebbb3688eaacf3d83329c9"
+  },
+  {
+    "version": "20260730162141",
+    "name": "0027_server_pin_amend_and_void",
+    "md5": "0d7461a85c1143740e7f858c17d9b703"
+  },
+  {
+    "version": "20260730162258",
+    "name": "0028_amend_uses_allowed_source",
+    "md5": "79f24c4ad5149e3d765261822a599d33"
+  },
+  {
+    "version": "20260730162359",
+    "name": "0029_allow_void_status",
+    "md5": "81057e31a7ac03ec47725e749522a195"
+  },
+  {
+    "version": "20260730162528",
+    "name": "0030_unlock_with_pin",
+    "md5": "204f9fb5fed0087a42502d950aa0cdcc"
+  },
+  {
+    "version": "20260730163826",
+    "name": "0031_bill_payment_inherits_internal_reason",
+    "md5": "e487df006f9caf9dde3b1303e9088313"
+  },
+  {
+    "version": "20260730170116",
+    "name": "0032_amend_everything",
+    "md5": "32fc52335b28fc301884d2dbf36d77c4"
+  },
+  {
+    "version": "20260731054834",
+    "name": "0033_bill_aware_corrections",
+    "md5": "b2be02f03e8857425efd25c703d80df1"
+  },
+  {
+    "version": "20260731055006",
+    "name": "0034_fix_open_bills_column_names",
+    "md5": "96d39e25c55ba77f547b972952155cab"
+  },
+  {
+    "version": "20260731055308",
+    "name": "0035_link_the_cancelling_half_of_an_amend",
+    "md5": "39dec5e28ad36522290c8fd20d53ddad"
+  },
+  {
+    "version": "20260731064336",
+    "name": "0036_voucher_overlay_support",
+    "md5": "8b5d5d5cb0d46107f902eaa97c808d36"
+  },
+  {
+    "version": "20260731131851",
+    "name": "0037_proof_alert_scoped_to_bills_only",
+    "md5": "46c4b4e54e8c5f94877b2091e34fe98b"
+  },
+  {
+    "version": "20260731132133",
+    "name": "0038_solo_vs_unified_report_scope",
+    "md5": "4508c07c2a7b0907155819f16307bd3e"
+  },
+  {
+    "version": "20260731132228",
+    "name": "0039_alerts_follow_solo_scope",
+    "md5": "cc6e758c02233199140443b5444143f5"
+  },
+  {
+    "version": "20260731132419",
+    "name": "0040_drop_stale_report_overloads",
+    "md5": "8112ee06b316b6289861837b4713763c"
+  },
+  {
+    "version": "20260731133610",
+    "name": "0041_bill_photo_storage",
+    "md5": "9d22a181b279b237cd50629541892ef8"
+  },
+  {
+    "version": "20260731134328",
+    "name": "0042_company_cin",
+    "md5": "09456e75be6dd9cf7fb6de160b881d1f"
+  },
+  {
+    "version": "20260731134441",
+    "name": "0043_period_lock_actions",
+    "md5": "8d1a3649b83f7a1ca02387228af01dc7"
+  },
+  {
+    "version": "20260803070940",
+    "name": "an_entry_must_change_something",
+    "md5": "69b97066818660993f53af5082d0d8ac"
+  },
+  {
+    "version": "20260803072102",
+    "name": "pin_guards_every_correction",
+    "md5": "8345ae01c2e714d6fcb9b37473b28269"
+  },
+  {
+    "version": "20260803145432",
+    "name": "master_data_accounts_and_parties",
+    "md5": "36e37118d3b5c87554ad388bcf20a786"
+  },
+  {
+    "version": "20260803145652",
+    "name": "opening_balances",
+    "md5": "4080b2bd082a32f4ef8913df1d4f4785"
+  },
+  {
+    "version": "20260803145901",
+    "name": "investors_and_capitalisation",
+    "md5": "a68c7ded42a0357aaea03fcf281f10ab"
+  },
+  {
+    "version": "20260803185902",
+    "name": "internal_functions_are_actually_internal",
+    "md5": "b8f293b5c2fc9d71fd71a2c6c3bf83ea"
+  },
+  {
+    "version": "20260804142418",
+    "name": "company_tax_profile_and_features",
+    "md5": "39bc0e77b7ad4b957a9be95cdb68b421"
+  },
+  {
+    "version": "20260804145658",
+    "name": "industry_chart_templates",
+    "md5": "03da405cf07a389a6bbf2f7280e41034"
+  },
+  {
+    "version": "20260805151347",
+    "name": "tax_accounts_have_a_role",
+    "md5": "dc960a5654340fd92e770e92d43dd316"
+  },
+  {
+    "version": "20260812084109",
+    "name": "pin_recovery_after_password",
+    "md5": "173197e97fd972f80935eb2e9e7f257d"
+  },
+  {
+    "version": "20260812085359",
+    "name": "rls_evaluate_auth_uid_once",
+    "md5": "3c82d2035c81eab20fb4e0fc67d10235"
+  }
+]

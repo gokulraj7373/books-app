@@ -1,0 +1,85 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), interest-cohort=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://YOUR-PROJECT-REF.supabase.co; font-src 'self'; connect-src 'self' https://YOUR-PROJECT-REF.supabase.co; manifest-src 'self'; worker-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# ==========================================================================
+# About the Content-Security-Policy above.
+#
+# There was none at all. A full-privilege session token sits in localStorage,
+# so a single injected script — from any dependency, at any point in the
+# supply chain — could read it and post it anywhere it liked. The policy does
+# not make that impossible, but it removes every easy way to do it: no inline
+# script may run, no script may load from another origin, and the ONLY host
+# this page may talk to is its own Supabase project.
+#
+# Line by line, and why each value is what it is:
+#
+#   script-src 'self'
+#       No 'unsafe-inline', no 'unsafe-eval', no hash. There is exactly one
+#       script that is not part of the bundle — the service-worker
+#       registration — and it was moved into public/sw-register.js precisely
+#       so this directive could stay this short. Do not add a hash here: a
+#       hash has to be recomputed on every byte change and fails closed.
+#
+#   style-src 'self' 'unsafe-inline'
+#       React writes `style` attributes for anything using the style prop, and
+#       Tailwind's build emits a plain stylesheet. Inline STYLE is not an
+#       execution vector the way inline SCRIPT is; this is the standard
+#       trade-off and the one directive here that is not tight.
+#
+#   connect-src 'self' https://YOUR-PROJECT-REF.supabase.co
+#       The whole point of the policy. Exfiltrating a token means making a
+#       request somewhere, and this names the only two places a request may
+#       go. No realtime websocket is used, so no wss: entry is needed — add
+#       one only when realtime is actually adopted.
+#
+#       ⚠ HARDCODED PROJECT REF. A static file cannot read build-time env
+#       vars, so this must be updated by hand if the Supabase project ever
+#       changes. Getting it wrong does not fail quietly: every request breaks
+#       immediately and visibly, which is the right way round.
+#
+#   img-src … blob: https://…supabase.co
+#       Bill photographs are served from Supabase Storage on that origin, and
+#       blob: covers previews of a photo the user has just picked, before it
+#       has been uploaded anywhere.
+#
+#   object-src 'none' · base-uri 'none' · frame-src 'none' · frame-ancestors 'none'
+#       No plugins, no <base> rewriting of every relative URL on the page, no
+#       framing anything, and nothing may frame this app. `frame-ancestors` is
+#       the modern X-Frame-Options; both are sent because older browsers only
+#       understand the header above.
+#
+#   form-action 'self'
+#       A form on this page cannot POST anywhere else. Cheap, and it closes a
+#       tidy little exfiltration route that connect-src alone does not.
+# ==========================================================================
+
+# Hashed filenames change on every build, so these are safe to keep forever.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The HTML shell must ALWAYS be revalidated. Without this, a returning visitor
+# is served a cached index.html pointing at asset hashes from an older release —
+# the app silently runs a stale build. `no-cache` means "revalidate before use",
+# not "never store", so a 304 is still cheap.
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+
+/sw.js
+  Cache-Control: no-cache
+
+# Not hashed, and it decides whether a worker gets installed at all, so it must
+# be revalidated like the shell rather than pinned for a year.
+/sw-register.js
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  Cache-Control: no-cache

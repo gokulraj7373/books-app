@@ -1,0 +1,43 @@
+{
+  "name": "books-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "size": "node scripts/check-bundle-size.mjs",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "ship": "npm run typecheck && npm run test && npm run lint && npm run build && npm run size && node scripts/check-migration-fidelity.mjs && node scripts/check-no-service-role.mjs"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.5.7",
+    "@supabase/supabase-js": "^2.110.9",
+    "@tanstack/query-sync-storage-persister": "^5.101.4",
+    "@tanstack/react-query": "^5.101.4",
+    "@tanstack/react-query-persist-client": "^5.101.4",
+    "@tanstack/react-router": "^1.170.18",
+    "idb-keyval": "^6.3.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-hook-form": "^7.83.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "@vitest/coverage-v8": "^4.1.10",
+    "oxlint": "^1.71.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
+  }
+}

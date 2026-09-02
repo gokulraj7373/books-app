@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   DESIGN SYSTEM — decided once, reused everywhere. Do not introduce ad-hoc
+   colours, spacing or button styles; compose from the primitives in
+   src/components/ui.tsx instead.
+
+   Brand reuses the Northwind investor-material identity so the app reads as a
+   finance product: navy #0B1F3A + gold #C9A227.
+   ========================================================================= */
+@theme {
+  --color-navy: #0b1f3a;
+  --color-navy2: #13294b;
+  --color-gold: #c9a227;
+  --color-gold2: #e3c254;
+  --color-ink: #14202e;
+  --color-muted: #5b6470;
+  --color-line: #e6e9ef;
+  --color-canvas: #f4f6fa;
+  --color-card: #ffffff;
+
+  --color-ok: #1e7a46;
+  --color-okbg: #e7f3ec;
+  --color-warn: #9a6a00;
+  --color-warnbg: #fbf1dc;
+  --color-danger: #b3321f;
+  --color-dangerbg: #fbeae7;
+  --color-info: #2f5fa0;
+  --color-infobg: #e9f0fa;
+
+  --radius-card: 1rem; /* rounded-2xl */
+  --radius-control: 0.75rem; /* rounded-xl */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tabular numerals. MANDATORY on any number a human will compare down a column
+   — a trial balance in proportional digits is genuinely harder to scan. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Motion: 150–220ms, and always honoured against the user's OS preference. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Notification pop-up. Slides up on a phone, in from the right on a desktop —
+   in both cases from the edge it is anchored to, so it reads as belonging
+   there rather than appearing over the work. */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.toast-in {
+  animation: toast-in 200ms ease-out;
+}
+
+/* Navigation drawer and bottom sheets. A modal on a phone belongs at the
+   bottom, within thumb reach, not floating in the middle where the keyboard
+   will cover it. */
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.slide-in-left {
+  animation: slide-in-left 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.sheet-up {
+  animation: sheet-up 260ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fade-in 180ms ease-out;
+}
+
+/* Visible focus for keyboard users — never remove without replacing. */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* iOS safe areas. A fixed bottom bar without this sits under the home
+   indicator on every modern iPhone. */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Stops iOS zooming the whole page when a 14px input is focused. 16px is the
+   threshold; below it Safari zooms and the layout jumps. */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Momentum scrolling inside horizontally-scrollable tables on iOS. */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ============================================================================
+   Print.
+
+   A printed report should look like a document, not a screenshot of an app:
+   no navigation, no buttons, black on white, and tables that do not break a row
+   across two pages.
+   ========================================================================= */
+@media print {
+  .no-print,
+  nav,
+  aside,
+  header button,
+  button {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* cards become plain sections on paper */
+  .rounded-2xl,
+  .rounded-xl {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border-color: #999 !important;
+    break-inside: avoid;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead {
+    display: table-header-group; /* repeat headings on every page */
+  }
+  tr {
+    break-inside: avoid;
+  }
+  th,
+  td {
+    border-bottom: 1px solid #ccc;
+    padding: 4px 6px !important;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+
+  @page {
+    margin: 14mm;
+  }
+}
+
+.print-only {
+  display: none;
+}

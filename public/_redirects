@@ -1,0 +1,2 @@
+# SPA: every unmatched path is handled by the client router, not a 404.
+/*  /index.html  200
